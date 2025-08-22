@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Download, Mail, Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import ComingSoon from './ComingSoon';
 
 // Floating Math Symbols Component
 const FloatingSymbols: React.FC = () => {
@@ -143,7 +144,11 @@ const HeroSection: React.FC = () => {
 };
 
 // Events Section
-const EventsSection: React.FC = () => {
+interface EventsSectionProps {
+  onEventClick: (event: { title: string; date: string; description: string }) => void;
+}
+
+const EventsSection: React.FC<EventsSectionProps> = ({ onEventClick }) => {
   const events = [
     {
       title: "Pi Day Celebration",
@@ -175,7 +180,16 @@ const EventsSection: React.FC = () => {
           {events.map((event, index) => (
             <div 
               key={index} 
-              className="panel-rainbow-hover p-6"
+              className="panel-rainbow-hover p-6 cursor-pointer"
+              onClick={() => onEventClick(event)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  onEventClick(event);
+                }
+              }}
+              tabIndex={0}
+              role="button"
+              aria-label={`View details for ${event.title}`}
             >
               <h3 className="text-2xl font-serif text-white mb-2">
                 {event.title}
@@ -416,12 +430,43 @@ const Footer: React.FC = () => {
 
 // Main App Component
 function App() {
+  const [showComingSoon, setShowComingSoon] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<{ title: string; date: string; description: string } | null>(null);
+
+  const handleEventClick = (event: { title: string; date: string; description: string }) => {
+    setSelectedEvent(event);
+    setShowComingSoon(true);
+  };
+
+  const handleBackToEvents = () => {
+    setShowComingSoon(false);
+    setSelectedEvent(null);
+    // Scroll to events section after a brief delay to ensure DOM is ready
+    setTimeout(() => {
+      const eventsElement = document.getElementById('events');
+      if (eventsElement) {
+        eventsElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
+  if (showComingSoon && selectedEvent) {
+    return (
+      <ComingSoon
+        eventTitle={selectedEvent.title}
+        eventDate={selectedEvent.date}
+        eventDescription={selectedEvent.description}
+        onBack={handleBackToEvents}
+      />
+    );
+  }
+
   return (
     <div className="bg-black min-h-screen" style={{ fontFamily: 'Times New Roman, serif' }}>
       <FloatingSymbols />
       <Navigation />
       <HeroSection />
-      <EventsSection />
+      <EventsSection onEventClick={handleEventClick} />
       <GallerySection />
       <FormsSection />
       <JoinSection />
