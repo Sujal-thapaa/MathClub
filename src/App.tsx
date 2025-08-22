@@ -97,23 +97,23 @@ const Navigation: React.FC = () => {
   return (
     <>
       {/* Logo in top left corner */}
-      <div className="fixed top-4 left-4 z-50">
+      <div className="fixed top-2 left-2 sm:top-4 sm:left-4 z-50">
         <img
           src="./images/mathLogo.jpeg"
           alt="Math Club Logo"
-          className="w-16 h-16 rounded-full border-2 border-white border-opacity-30 hover:border-opacity-100 transition-all duration-300 cursor-pointer"
+          className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white border-opacity-30 hover:border-opacity-100 transition-all duration-300 cursor-pointer"
           onClick={() => scrollToSection('home')}
         />
       </div>
 
       {/* Main navigation */}
-      <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 bg-black bg-opacity-90 backdrop-blur-md px-8 py-4 rounded-b-lg border-b border-white border-opacity-20">
-        <div className="flex space-x-8">
+      <nav className="fixed top-0 left-1/2 transform -translate-x-1/2 z-50 bg-black bg-opacity-90 backdrop-blur-md px-2 sm:px-8 py-2 sm:py-4 rounded-b-lg border-b border-white border-opacity-20 w-full max-w-xs sm:max-w-none sm:w-auto">
+        <div className="flex flex-wrap justify-center space-x-2 sm:space-x-8">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="text-white hover:shadow-white hover:shadow-sm transition-all duration-300 font-serif text-lg px-3 py-1 hover:underline hover:decoration-white hover:decoration-2 hover:underline-offset-4"
+              className="text-white hover:shadow-white hover:shadow-sm transition-all duration-300 font-serif text-sm sm:text-lg px-1 sm:px-3 py-1 hover:underline hover:decoration-white hover:decoration-2 hover:underline-offset-4"
             >
               {item.label}
             </button>
@@ -127,15 +127,15 @@ const Navigation: React.FC = () => {
 // Hero Section
 const HeroSection: React.FC = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative">
-      <div className="text-center z-10">
-        <h1 className="text-6xl md:text-8xl font-serif text-white mb-4 animate-fadeIn">
+    <section id="home" className="min-h-screen flex items-center justify-center relative px-4">
+      <div className="text-center z-10 max-w-4xl mx-auto">
+        <h1 className="text-4xl sm:text-6xl md:text-8xl font-serif text-white mb-4 animate-fadeIn leading-tight">
           Math Club @ ULM
         </h1>
-        <p className="text-2xl md:text-3xl text-white mb-8 font-serif opacity-90 animate-fadeIn delay-300">
+        <p className="text-lg sm:text-2xl md:text-3xl text-white mb-8 font-serif opacity-90 animate-fadeIn delay-300">
           Where numbers meet creativity.
         </p>
-        <button className="bg-white text-black px-8 py-4 text-xl font-serif rounded-lg hover:shadow-white hover:shadow-lg transition-all duration-300 transform hover:scale-105 animate-fadeIn delay-500">
+        <button className="bg-white text-black px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-xl font-serif rounded-lg hover:shadow-white hover:shadow-lg transition-all duration-300 transform hover:scale-105 animate-fadeIn delay-500">
           Join Now
         </button>
       </div>
@@ -173,14 +173,14 @@ const EventsSection: React.FC<EventsSectionProps> = ({ onEventClick }) => {
   ];
 
   return (
-    <section id="events" className="py-20 px-4">
+    <section id="events" className="py-12 sm:py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl font-serif text-white text-center mb-16">Upcoming Events</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white text-center mb-8 sm:mb-16">Upcoming Events</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
           {events.map((event, index) => (
             <div 
               key={index} 
-              className="panel-rainbow-hover p-6 cursor-pointer"
+              className="panel-rainbow-hover p-4 sm:p-6 cursor-pointer"
               onClick={() => onEventClick(event)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -191,13 +191,13 @@ const EventsSection: React.FC<EventsSectionProps> = ({ onEventClick }) => {
               role="button"
               aria-label={`View details for ${event.title}`}
             >
-              <h3 className="text-2xl font-serif text-white mb-2">
+              <h3 className="text-xl sm:text-2xl font-serif text-white mb-2">
                 {event.title}
               </h3>
-              <p className="text-white opacity-80 mb-3 font-serif text-lg">
+              <p className="text-white opacity-80 mb-3 font-serif text-base sm:text-lg">
                 {event.date}
               </p>
-              <p className="text-white opacity-90 font-serif">
+              <p className="text-white opacity-90 font-serif text-sm sm:text-base">
                 {event.description}
               </p>
             </div>
@@ -217,10 +217,10 @@ const GallerySection: React.FC = () => {
   ][i]}.jpeg?auto=compress&cs=tinysrgb&w=400`);
 
   return (
-    <section id="gallery" className="py-20 px-4">
+    <section id="gallery" className="py-12 sm:py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-5xl font-serif text-white text-center mb-16">Gallery</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white text-center mb-8 sm:mb-16">Gallery</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
           {images.map((image, index) => (
             <div key={index} className="aspect-square overflow-hidden rounded-lg group cursor-pointer">
               <img
@@ -245,20 +245,20 @@ const FormsSection: React.FC = () => {
   ];
 
   return (
-    <section id="forms" className="py-20 px-4">
+    <section id="forms" className="py-12 sm:py-20 px-4">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-5xl font-serif text-white mb-16">Club Forms</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-8 sm:mb-16">Club Forms</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
           {forms.map((form, index) => (
             <div 
               key={index} 
-              className="panel-rainbow-hover p-8"
+              className="panel-rainbow-hover p-4 sm:p-8"
             >
-              <h3 className="text-2xl font-serif text-white mb-6">
+              <h3 className="text-xl sm:text-2xl font-serif text-white mb-4 sm:mb-6">
                 {form.name}
               </h3>
-              <button className="bg-white text-black px-6 py-3 font-serif rounded-lg hover:shadow-white hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center mx-auto">
-                <Download className="mr-2" size={20} />
+              <button className="bg-white text-black px-4 sm:px-6 py-2 sm:py-3 font-serif rounded-lg hover:shadow-white hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center mx-auto text-sm sm:text-base">
+                <Download className="mr-2" size={16} />
                 Download
               </button>
             </div>
@@ -280,23 +280,23 @@ const JoinSection: React.FC = () => {
   };
 
   return (
-    <section id="join" className="py-20 px-4">
+    <section id="join" className="py-12 sm:py-20 px-4">
       <div className="max-w-2xl mx-auto text-center">
-        <h2 className="text-5xl font-serif text-white mb-4">Be part of the equation.</h2>
-        <p className="text-xl text-white opacity-90 font-serif mb-12">Join our community of mathematical minds</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4 leading-tight">Be part of the equation.</h2>
+        <p className="text-lg sm:text-xl text-white opacity-90 font-serif mb-8 sm:mb-12">Join our community of mathematical minds</p>
         
         <form 
           onSubmit={handleSubmit} 
-          className="panel-rainbow-hover p-8"
+          className="panel-rainbow-hover p-4 sm:p-8"
         >
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <input
               type="text"
               placeholder="Full Name"
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
               required
-              className="w-full px-4 py-3 bg-white bg-opacity-20 text-white placeholder-white placeholder-opacity-70 rounded-lg border border-white border-opacity-30 focus:outline-none focus:shadow-white focus:shadow-md font-serif text-lg"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white bg-opacity-20 text-white placeholder-white placeholder-opacity-70 rounded-lg border border-white border-opacity-30 focus:outline-none focus:shadow-white focus:shadow-md font-serif text-base sm:text-lg"
             />
             <input
               type="email"
@@ -304,7 +304,7 @@ const JoinSection: React.FC = () => {
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
               required
-              className="w-full px-4 py-3 bg-white bg-opacity-20 text-white placeholder-white placeholder-opacity-70 rounded-lg border border-white border-opacity-30 focus:outline-none focus:shadow-white focus:shadow-md font-serif text-lg"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white bg-opacity-20 text-white placeholder-white placeholder-opacity-70 rounded-lg border border-white border-opacity-30 focus:outline-none focus:shadow-white focus:shadow-md font-serif text-base sm:text-lg"
             />
             <input
               type="text"
@@ -312,12 +312,12 @@ const JoinSection: React.FC = () => {
               value={formData.major}
               onChange={(e) => setFormData({...formData, major: e.target.value})}
               required
-              className="w-full px-4 py-3 bg-white bg-opacity-20 text-white placeholder-white placeholder-opacity-70 rounded-lg border border-white border-opacity-30 focus:outline-none focus:shadow-white focus:shadow-md font-serif text-lg"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white bg-opacity-20 text-white placeholder-white placeholder-opacity-70 rounded-lg border border-white border-opacity-30 focus:outline-none focus:shadow-white focus:shadow-md font-serif text-base sm:text-lg"
             />
           </div>
           <button
             type="submit"
-            className="w-full mt-8 bg-white text-black px-8 py-4 text-xl font-serif rounded-lg hover:shadow-white hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+            className="w-full mt-6 sm:mt-8 bg-white text-black px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-xl font-serif rounded-lg hover:shadow-white hover:shadow-lg transition-all duration-300 transform hover:scale-105"
           >
             Join the Club
           </button>
@@ -337,12 +337,12 @@ const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-4">
+    <section id="about" className="py-12 sm:py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-5xl font-serif text-white text-center mb-16">About Us</h2>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white text-center mb-8 sm:mb-16">About Us</h2>
         
-        <div className="mb-16">
-          <p className="text-xl text-white font-serif leading-relaxed text-center max-w-4xl mx-auto opacity-90">
+        <div className="mb-8 sm:mb-16">
+          <p className="text-base sm:text-lg md:text-xl text-white font-serif leading-relaxed text-center max-w-4xl mx-auto opacity-90">
             The University of Louisiana Monroe Math Club is dedicated to fostering a love for mathematics 
             among students of all backgrounds. We provide a supportive community where mathematical minds 
             can explore, learn, and grow together. Through engaging events, competitions, guest lectures, 
@@ -353,19 +353,19 @@ const AboutSection: React.FC = () => {
         </div>
 
         <div>
-          <h3 className="text-3xl font-serif text-white text-center mb-12">Leadership Team</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <h3 className="text-2xl sm:text-3xl font-serif text-white text-center mb-8 sm:mb-12">Leadership Team</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             {leadership.map((member, index) => (
               <div key={index} className="text-center">
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white border-opacity-30 hover:border-opacity-100 transition-all duration-300">
+                <div className="w-20 h-20 sm:w-32 sm:h-32 mx-auto mb-3 sm:mb-4 rounded-full overflow-hidden border-2 sm:border-4 border-white border-opacity-30 hover:border-opacity-100 transition-all duration-300">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h4 className="text-xl font-serif text-white mb-1">{member.name}</h4>
-                <p className="text-white opacity-80 font-serif">{member.role}</p>
+                <h4 className="text-sm sm:text-xl font-serif text-white mb-1">{member.name}</h4>
+                <p className="text-xs sm:text-base text-white opacity-80 font-serif">{member.role}</p>
               </div>
             ))}
           </div>
@@ -378,48 +378,48 @@ const AboutSection: React.FC = () => {
 // Footer Component
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black border-t border-white border-opacity-20 py-12 px-4">
+    <footer className="bg-black border-t border-white border-opacity-20 py-8 sm:py-12 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <h4 className="text-xl font-serif text-white mb-4">Contact</h4>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
+          <div className="text-center sm:text-left">
+            <h4 className="text-lg sm:text-xl font-serif text-white mb-3 sm:mb-4">Contact</h4>
             <div className="space-y-2 text-white opacity-80">
-              <div className="flex items-center font-serif">
-                <Mail size={16} className="mr-2" />
-                mathclub@ulm.edu
+              <div className="flex items-center justify-center sm:justify-start font-serif text-sm sm:text-base">
+                <Mail size={14} className="mr-2 flex-shrink-0" />
+                <span className="break-all">mathclub@ulm.edu</span>
               </div>
-              <div className="flex items-center font-serif">
-                <Phone size={16} className="mr-2" />
+              <div className="flex items-center justify-center sm:justify-start font-serif text-sm sm:text-base">
+                <Phone size={14} className="mr-2 flex-shrink-0" />
                 (318) 342-1000
               </div>
-              <div className="flex items-center font-serif">
-                <MapPin size={16} className="mr-2" />
+              <div className="flex items-center justify-center sm:justify-start font-serif text-sm sm:text-base">
+                <MapPin size={14} className="mr-2 flex-shrink-0" />
                 Walker Hall, ULM Campus
               </div>
             </div>
           </div>
           
-          <div>
-            <h4 className="text-xl font-serif text-white mb-4">Follow Us</h4>
-            <div className="flex space-x-4">
-              <Facebook size={24} className="text-white opacity-80 hover:opacity-100 cursor-pointer transition-opacity duration-300" />
-              <Instagram size={24} className="text-white opacity-80 hover:opacity-100 cursor-pointer transition-opacity duration-300" />
-              <Twitter size={24} className="text-white opacity-80 hover:opacity-100 cursor-pointer transition-opacity duration-300" />
+          <div className="text-center sm:text-left">
+            <h4 className="text-lg sm:text-xl font-serif text-white mb-3 sm:mb-4">Follow Us</h4>
+            <div className="flex justify-center sm:justify-start space-x-4">
+              <Facebook size={20} className="text-white opacity-80 hover:opacity-100 cursor-pointer transition-opacity duration-300" />
+              <Instagram size={20} className="text-white opacity-80 hover:opacity-100 cursor-pointer transition-opacity duration-300" />
+              <Twitter size={20} className="text-white opacity-80 hover:opacity-100 cursor-pointer transition-opacity duration-300" />
             </div>
           </div>
           
-          <div>
-            <h4 className="text-xl font-serif text-white mb-4">Links</h4>
+          <div className="text-center sm:text-left">
+            <h4 className="text-lg sm:text-xl font-serif text-white mb-3 sm:mb-4">Links</h4>
             <div className="space-y-2">
-              <a href="#" className="block text-white opacity-80 hover:opacity-100 font-serif transition-opacity duration-300">University Site</a>
-              <a href="#" className="block text-white opacity-80 hover:opacity-100 font-serif transition-opacity duration-300">Math Department</a>
-              <a href="#" className="block text-white opacity-80 hover:opacity-100 font-serif transition-opacity duration-300">Student Organizations</a>
+              <a href="#" className="block text-white opacity-80 hover:opacity-100 font-serif transition-opacity duration-300 text-sm sm:text-base">University Site</a>
+              <a href="#" className="block text-white opacity-80 hover:opacity-100 font-serif transition-opacity duration-300 text-sm sm:text-base">Math Department</a>
+              <a href="#" className="block text-white opacity-80 hover:opacity-100 font-serif transition-opacity duration-300 text-sm sm:text-base">Student Organizations</a>
             </div>
           </div>
         </div>
         
-        <div className="border-t border-white border-opacity-20 pt-8 text-center">
-          <p className="text-white opacity-70 font-serif">
+        <div className="border-t border-white border-opacity-20 pt-6 sm:pt-8 text-center">
+          <p className="text-white opacity-70 font-serif text-sm sm:text-base">
             © 2025 Math Club – University of Louisiana Monroe. All rights reserved.
           </p>
         </div>

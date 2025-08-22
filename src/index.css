@@ -164,6 +164,18 @@ input::placeholder {
   transform: translateY(-2px);
 }
 
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  .panel-rainbow-hover:hover {
+    transform: translateY(-1px);
+  }
+  
+  /* Reduce transform effects on mobile for better performance */
+  .hover\:scale-105:hover {
+    transform: scale(1.02);
+  }
+}
+
 
 /* Enhanced cursor styles for different states */
 /* Loading state */
