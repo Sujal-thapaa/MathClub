@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Main App - Cursor Test</title>
+    <style>
+        /* Debug styles */
+        .debug-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 9999;
+            max-width: 300px;
+        }
+        
+        .debug-error {
+            color: #ff0000;
+        }
+        
+        .debug-success {
+            color: #00ff00;
+        }
+        
+        .debug-warning {
+            color: #ffff00;
+        }
+        
+        /* Test the exact cursor styles from your main app */
+        * {
+            cursor: url('/cursor-small.png') 8 8, auto;
+        }
+        
+        button, a, input, .group, [role="button"], [tabindex] {
+            cursor: url('/pointer-small.png') 8 8, pointer;
+        }
+        
+        input[type="text"], input[type="number"], textarea {
+            cursor: url('/cursor-small.png') 8 8, text;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-info">
+        <div>🔍 Debug Mode Active</div>
+        <div id="css-status">CSS: Loading...</div>
+        <div id="cursor-status">Cursors: Loading...</div>
+        <div id="app-status">App: Loading...</div>
+    </div>
+    
+    <!-- Test the exact same structure as your main app -->
+    <div id="root">
+        <div style="font-family: 'Times New Roman', serif; background: #000; color: #fff; min-height: 100vh; padding: 20px;">
+            <h1>🎯 Debug Main App - Cursor Test</h1>
+            
+            <div style="margin: 20px 0; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                <h3>Test 1: Basic Cursor Styles</h3>
+                <p>This tests if the basic cursor CSS is working:</p>
+                <button style="padding: 10px 20px; margin: 10px; background: #333; color: #fff; border: 1px solid #fff; border-radius: 4px;">
+                    Button with pointer cursor
+                </button>
+                <input type="text" placeholder="Input with text cursor" style="padding: 10px; margin: 10px; background: #222; color: #fff; border: 1px solid #555; border-radius: 4px; width: 200px;" />
+            </div>
+            
+            <div style="margin: 20px 0; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                <h3>Test 2: Rainbow Panel Simulation</h3>
+                <p>This simulates your Events/Forms/Join panels:</p>
+                <div class="panel-rainbow-static" style="padding: 20px; margin: 20px 0; background: rgba(255,255,255,0.1); border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease;">
+                    <h4>Rainbow Panel Test</h4>
+                    <p>Hover over this panel - should show rainbow border + pointer cursor</p>
+                    <button style="padding: 10px 20px; background: #333; color: #fff; border: 1px solid #fff; border-radius: 4px;">
+                        Click me
+                    </button>
+                </div>
+            </div>
+            
+            <div style="margin: 20px 0; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                <h3>Test 3: Navigation Simulation</h3>
+                <p>This simulates your navbar:</p>
+                <nav style="background: rgba(0,0,0,0.9); padding: 15px; border-radius: 8px; margin: 20px 0;">
+                    <button style="background: none; border: none; color: white; padding: 8px 16px; margin: 0 8px; border-radius: 4px;">Home</button>
+                    <button style="background: none; border: none; color: white; padding: 8px 16px; margin: 0 8px; border-radius: 4px;">Events</button>
+                    <button style="background: none; border: none; color: white; padding: 8px 16px; margin: 0 8px; border-radius: 4px;">Forms</button>
+                    <button style="background: none; border: none; color: white; padding: 8px 16px; margin: 0 8px; border-radius: 4px;">Join</button>
+                </nav>
+            </div>
+            
+            <div style="margin: 20px 0; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                <h3>🔧 Debug Information</h3>
+                <p><strong>CSS File:</strong> <code>/src/index.css</code></p>
+                <p><strong>Cursor Files:</strong> <code>/School Calculator & Math Formula Animated--cursor--SweezyCursors.png</code>, <code>/School Calculator & Math Formula Animated--pointer--SweezyCursors.png</code></p>
+                <p><strong>Expected Behavior:</strong> All elements should show custom cursors</p>
+                <p><strong>If Not Working:</strong> Check browser console for CSS errors</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        console.log('Debug Main App Loaded');
+        
+        // Test CSS loading
+        const cssLink = document.createElement('link');
+        cssLink.rel = 'stylesheet';
+        cssLink.href = '/src/index.css';
+        
+        cssLink.onload = function() {
+            document.getElementById('css-status').innerHTML = 'CSS: ✅ Loaded';
+            document.getElementById('css-status').className = 'debug-success';
+            console.log('✅ CSS loaded successfully');
+        };
+        
+        cssLink.onerror = function() {
+            document.getElementById('css-status').innerHTML = 'CSS: ❌ Failed';
+            document.getElementById('css-status').className = 'debug-error';
+            console.error('❌ CSS failed to load');
+        };
+        
+        document.head.appendChild(cssLink);
+        
+        // Test cursor files
+        Promise.all([
+            fetch('/cursor-small.png'),
+            fetch('/pointer-small.png')
+        ]).then(responses => {
+            const [cursorRes, pointerRes] = responses;
+            console.log('Cursor files:', { cursor: cursorRes.status, pointer: pointerRes.status });
+            
+            if (cursorRes.ok && pointerRes.ok) {
+                document.getElementById('cursor-status').innerHTML = 'Cursors: ✅ Working';
+                document.getElementById('cursor-status').className = 'debug-success';
+                console.log('✅ All cursor files accessible');
+            } else {
+                document.getElementById('cursor-status').innerHTML = 'Cursors: ❌ Failed';
+                document.getElementById('cursor-status').className = 'debug-error';
+                console.log('❌ Some cursor files failed');
+            }
+        }).catch(error => {
+            console.error('Cursor file error:', error);
+            document.getElementById('cursor-status').innerHTML = 'Cursors: ❌ Error';
+            document.getElementById('cursor-status').className = 'debug-error';
+        });
+        
+        // Test app functionality
+        setTimeout(() => {
+            document.getElementById('app-status').innerHTML = 'App: ✅ Ready';
+            document.getElementById('app-status').className = 'debug-success';
+        }, 1000);
+        
+        // Add click handlers for testing
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.background = '#666';
+                setTimeout(() => {
+                    this.style.background = '';
+                }, 200);
+            });
+        });
+        
+        // Test rainbow panel hover
+        document.querySelector('.panel-rainbow-static').addEventListener('mouseenter', function() {
+            console.log('🎨 Rainbow panel hover detected');
+        });
+    </script>
+</body>
+</html>

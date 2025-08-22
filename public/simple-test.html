@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Cursor Test</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .test {
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid #fff;
+            cursor: url('/cursor.cur'), pointer;
+        }
+        
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background: #333;
+            color: #fff;
+            border: 1px solid #fff;
+            cursor: url('/cursor.cur'), pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Minimal Cursor Test</h1>
+    
+    <div class="test">
+        <p>Hover over this area - should show custom cursor</p>
+        <button>Test Button</button>
+    </div>
+    
+    <p>If you see the default cursor, the custom cursor isn't loading.</p>
+    <p>Check browser console for errors.</p>
+</body>
+</html>

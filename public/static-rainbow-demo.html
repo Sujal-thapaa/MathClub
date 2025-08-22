@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Rainbow UI Demo</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+        }
+        
+        .panel-rainbow-static {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid transparent;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        
+        .panel-rainbow-static::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, 
+                #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000);
+            background-size: 200% 100%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+            filter: blur(8px);
+        }
+        
+        .panel-rainbow-static:hover {
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(90deg, 
+                            #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, 
+                            #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000) border-box;
+            background-size: 200% 100%;
+            transform: translateY(-2px);
+            box-shadow: 
+                0 0 20px rgba(255, 0, 0, 0.4),
+                0 0 40px rgba(255, 128, 0, 0.3),
+                0 0 60px rgba(255, 255, 0, 0.2),
+                0 0 80px rgba(0, 255, 0, 0.1),
+                0 0 100px rgba(0, 128, 255, 0.1),
+                0 0 120px rgba(128, 0, 255, 0.1),
+                0 0 140px rgba(255, 0, 128, 0.1);
+        }
+        
+        .panel-rainbow-static.active {
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(90deg, 
+                            #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, 
+                            #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000) border-box;
+            background-size: 200% 100%;
+            transform: translateY(-1px);
+            box-shadow: 
+                0 0 20px rgba(255, 0, 0, 0.4),
+                0 0 40px rgba(255, 128, 0, 0.3),
+                0 0 60px rgba(255, 255, 0, 0.2),
+                0 0 80px rgba(0, 255, 0, 0.1),
+                0 0 100px rgba(0, 128, 255, 0.1),
+                0 0 120px rgba(128, 0, 255, 0.1),
+                0 0 140px rgba(255, 0, 128, 0.1);
+        }
+        
+        .panel-rainbow-static.active::before {
+            opacity: 0.15;
+        }
+        
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .click-instruction {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .color-swatch {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        .red { background: #ff0000; }
+        .orange { background: #ff8000; }
+        .yellow { background: #ffff00; }
+        .green { background: #00ff00; }
+        .blue { background: #0080ff; }
+        .indigo { background: #8000ff; }
+        .violet { background: #ff00ff; }
+    </style>
+</head>
+<body>
+    <h1>🌈 Static Rainbow UI Demo</h1>
+    
+    <div class="info-box">
+        <h3>🎯 How the Static Rainbow Effects Work:</h3>
+        <p>1. <strong>Hover Effect:</strong> Rainbow border with all colors visible simultaneously + glow</p>
+        <p>2. <strong>Click Effect:</strong> Rainbow border + soft rainbow background fill</p>
+        <p>3. <strong>Static Colors:</strong> All rainbow colors show at the same time (no animation)</p>
+        <p>4. <strong>Design:</strong> Respects the black background and white text theme</p>
+    </div>
+    
+    <div class="demo-section">
+        <h2>🎨 Rainbow Color Palette:</h2>
+        <div class="color-palette">
+            <div class="color-swatch red" title="Red"></div>
+            <div class="color-swatch orange" title="Orange"></div>
+            <div class="color-swatch yellow" title="Yellow"></div>
+            <div class="color-swatch green" title="Green"></div>
+            <div class="color-swatch blue" title="Blue"></div>
+            <div class="color-swatch indigo" title="Indigo"></div>
+            <div class="color-swatch violet" title="Violet"></div>
+        </div>
+        <p><em>All these colors appear simultaneously in the rainbow effects</em></p>
+    </div>
+    
+    <div class="demo-section">
+        <h2>✨ Interactive Demo Panels:</h2>
+        
+        <div class="panel-rainbow-static" onclick="togglePanel(this)">
+            <h3>🎨 Hover for Rainbow Border Glow</h3>
+            <p>Move your mouse over this panel to see the static rainbow border with all colors</p>
+            <p><em>Notice: All rainbow colors are visible at once, not cycling through</em></p>
+        </div>
+        
+        <div class="panel-rainbow-static" onclick="togglePanel(this)">
+            <h3>🌟 Click for Full Rainbow Mode</h3>
+            <p>Click this panel to see both the rainbow border and soft rainbow background</p>
+            <p><em>The rainbow background uses all colors simultaneously with low opacity</em></p>
+        </div>
+        
+        <div class="panel-rainbow-static" onclick="togglePanel(this)">
+            <h3>🎭 Smooth Transitions</h3>
+            <p>Notice the smooth 400ms transitions and subtle lift animations</p>
+            <p><em>All effects are performant and accessible</em></p>
+        </div>
+    </div>
+    
+    <div class="info-box">
+        <h3>🚀 Features Implemented:</h3>
+        <ul>
+            <li>✨ Static rainbow border (all colors visible simultaneously)</li>
+            <li>🌟 Rainbow border glow on hover with multi-color shadows</li>
+            <li>🎯 Soft rainbow background fill when clicked</li>
+            <li>🎨 No color animation - all rainbow colors show at once</li>
+            <li>📱 Responsive design with rounded corners</li>
+            <li>♿ Keyboard accessible (Tab, Enter, Space)</li>
+        </ul>
+    </div>
+    
+    <div class="click-instruction">
+        <strong>💡 Tip:</strong> Go back to your main app and try the three panels: Upcoming Events, Club Forms, and "Be part of the equation"!
+    </div>
+    
+    <div class="info-box">
+        <h3>🔧 Technical Details:</h3>
+        <p><strong>CSS Technique:</strong> Linear gradients with padding-box and border-box</p>
+        <p><strong>Colors:</strong> Red, Orange, Yellow, Green, Blue, Indigo, Violet</p>
+        <p><strong>Duration:</strong> 400ms transitions with cubic-bezier easing</p>
+        <p><strong>Effects:</strong> Border glow, background fill, transform, shadow</p>
+        <p><strong>Performance:</strong> Hardware-accelerated CSS transforms</p>
+    </div>
+    
+    <script>
+        function togglePanel(panel) {
+            panel.classList.toggle('active');
+        }
+        
+        // Add keyboard support for demo
+        document.querySelectorAll('.panel-rainbow-static').forEach(panel => {
+            panel.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    togglePanel(panel);
+                }
+            });
+            panel.setAttribute('tabindex', '0');
+            panel.setAttribute('role', 'button');
+        });
+    </script>
+</body>
+</html>

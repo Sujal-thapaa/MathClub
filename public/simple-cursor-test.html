@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Cursor Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+        }
+        
+        .test-area {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #fff;
+            border-radius: 8px;
+        }
+        
+        /* Test 1: Basic cursor */
+        .test1 {
+            cursor: url('/School Calculator & Math Formula Animated--pointer--SweezyCursors.cur'), pointer;
+        }
+        
+        /* Test 2: With fallback */
+        .test2 {
+            cursor: url('/School Calculator & Math Formula Animated--pointer--SweezyCursors.cur') 16 16, pointer;
+        }
+        
+        /* Test 3: Different approach */
+        .test3 {
+            cursor: url('/School Calculator & Math Formula Animated--pointer--SweezyCursors.cur') 0 0, auto;
+        }
+        
+        /* Test 4: Force important */
+        .test4 {
+            cursor: url('/School Calculator & Math Formula Animated--pointer--SweezyCursors.cur') !important;
+        }
+        
+        button {
+            padding: 15px 30px;
+            margin: 10px;
+            background: #333;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .info {
+            background: #222;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Simple Cursor Test</h1>
+    
+    <div class="info">
+        <h3>Instructions:</h3>
+        <p>1. Hover over each test area to see if the cursor changes</p>
+        <p>2. Check browser console for any errors</p>
+        <p>3. Try clicking the buttons to see pointer cursor</p>
+    </div>
+    
+    <div class="test-area test1">
+        <h3>Test 1: Basic Cursor</h3>
+        <p>Hover here - should show custom cursor</p>
+        <button>Click me</button>
+    </div>
+    
+    <div class="test-area test2">
+        <h3>Test 2: Cursor with Coordinates</h3>
+        <p>Hover here - cursor with 16x16 hotspot</p>
+        <button>Click me</button>
+    </div>
+    
+    <div class="test-area test3">
+        <h3>Test 3: Cursor with 0,0 hotspot</h3>
+        <p>Hover here - cursor with 0,0 hotspot</p>
+        <button>Click me</button>
+    </div>
+    
+    <div class="test-area test4">
+        <h3>Test 4: Force Important</h3>
+        <p>Hover here - cursor with !important</p>
+        <button>Click me</button>
+    </div>
+    
+    <div class="info">
+        <h3>Debug Info:</h3>
+        <p>Cursor file: <code>/School Calculator & Math Formula Animated--pointer--SweezyCursors.cur</code></p>
+        <p>File size: 9.4KB</p>
+        <p>If cursors don't work, check browser console for errors</p>
+    </div>
+</body>
+</html>

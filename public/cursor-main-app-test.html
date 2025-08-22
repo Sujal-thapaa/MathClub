@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Test - Main App Style</title>
+    <style>
+        /* Import the same CSS as your main app */
+        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        
+        /* Test the exact cursor styles from your main app */
+        * {
+            cursor: url('/cursor.cur'), auto;
+        }
+        
+        button, a, input, .group, [role="button"], [tabindex] {
+            cursor: url('/pointer-main.cur'), pointer;
+        }
+        
+        input[type="text"], input[type="number"], textarea {
+            cursor: url('/cursor.cur'), text;
+        }
+        
+        /* Simulate your main app structure */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            padding: 1rem 2rem;
+            border-radius: 0 0 8px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .nav button {
+            background: none;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            font-family: 'Times New Roman', serif;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .content {
+            margin-top: 100px;
+            padding: 2rem;
+        }
+        
+        .panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .panel:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .rainbow-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .rainbow-panel:hover {
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(90deg, 
+                          #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, 
+                          #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080, #ff0000) border-box;
+            background-size: 200% 100%;
+            transform: translateY(-2px);
+            box-shadow: 
+              0 0 20px rgba(255, 0, 0, 0.4),
+              0 0 40px rgba(255, 128, 0, 0.3),
+              0 0 60px rgba(255, 255, 0, 0.2),
+              0 0 80px rgba(0, 255, 0, 0.1),
+              0 0 100px rgba(0, 128, 255, 0.1),
+              0 0 120px rgba(128, 0, 255, 0.1),
+              0 0 140px rgba(255, 0, 128, 0.1);
+        }
+        
+        .info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .success {
+            background: rgba(0, 255, 0, 0.2);
+            border-color: rgba(0, 255, 0, 0.5);
+        }
+        
+        .error {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: rgba(255, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Simulate your navigation -->
+    <nav class="nav">
+        <button>Home</button>
+        <button>Events</button>
+        <button>Gallery</button>
+        <button>Forms</button>
+        <button>Join</button>
+        <button>About</button>
+    </nav>
+    
+    <div class="content">
+        <h1>🎯 Cursor Test - Main App Style</h1>
+        
+        <div class="info">
+            <h3>🔍 Testing Cursors in Main App Context:</h3>
+            <p>This page simulates your main Math Club app structure to test if cursor styles work properly.</p>
+        </div>
+        
+        <div class="panel">
+            <h3>Test Panel 1: Default Cursor</h3>
+            <p>Hover over this panel - should show the main cursor</p>
+            <button>Click me - pointer cursor</button>
+            <input type="text" placeholder="Type here - text cursor" />
+        </div>
+        
+        <div class="rainbow-panel">
+            <h3>Test Panel 2: Rainbow Panel (Like Your Events/Forms/Join)</h3>
+            <p>Hover over this panel - should show rainbow border + pointer cursor</p>
+            <button>Click me - pointer cursor</button>
+            <p><em>This panel has the same rainbow hover effects as your main app panels</em></p>
+        </div>
+        
+        <div class="panel">
+            <h3>Test Panel 3: Interactive Elements</h3>
+            <p>Test different cursor states:</p>
+            <button>Button with pointer cursor</button>
+            <input type="text" placeholder="Input with text cursor" />
+            <a href="#" style="color: #00ffff; text-decoration: underline;">Link with pointer cursor</a>
+        </div>
+        
+        <div class="info">
+            <h3>🚀 What This Tests:</h3>
+            <ul>
+                <li>✅ <strong>Default cursor:</strong> <code>/cursor.cur</code> on all elements</li>
+                <li>✅ <strong>Pointer cursor:</strong> <code>/pointer-main.cur</code> on buttons/links</li>
+                <li>✅ <strong>Text cursor:</strong> <code>/cursor.cur</code> on input fields</li>
+                <li>✅ <strong>Rainbow effects:</strong> Same as your main app panels</li>
+                <li>✅ <strong>Navigation:</strong> Simulated navbar with cursor styles</li>
+            </ul>
+        </div>
+        
+        <div class="info">
+            <h3>💡 If Cursors Work Here But Not in Main App:</h3>
+            <p>The issue is likely:</p>
+            <ul>
+                <li>🔴 <strong>CSS conflicts</strong> - React components overriding cursor styles</li>
+                <li>🔴 <strong>Tailwind CSS</strong> - Utility classes overriding custom cursors</li>
+                <li>🔴 <strong>Component styling</strong> - Inline styles or component CSS</li>
+                <li>🔴 <strong>CSS specificity</strong> - Other styles being more specific</li>
+            </ul>
+        </div>
+        
+        <div class="info">
+            <h3>🔧 Next Steps:</h3>
+            <p>1. <strong>Test this page:</strong> <code>http://localhost:5173/cursor-main-app-test.html</code></p>
+            <p>2. <strong>Compare with main app:</strong> <code>http://localhost:5173/</code></p>
+            <p>3. <strong>Check browser console</strong> for any CSS errors</p>
+            <p>4. <strong>Inspect elements</strong> to see if cursor styles are applied</p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('Main App Style Cursor Test Loaded');
+        
+        // Test cursor file accessibility
+        Promise.all([
+            fetch('/cursor.cur'),
+            fetch('/pointer-main.cur')
+        ]).then(responses => {
+            const [cursorRes, pointerRes] = responses;
+            console.log('Cursor files accessible:', {
+                cursor: cursorRes.status,
+                pointer: pointerRes.status
+            });
+            
+            if (cursorRes.ok && pointerRes.ok) {
+                document.body.classList.add('success');
+                console.log('✅ All cursor files are working!');
+            } else {
+                document.body.classList.add('error');
+                console.log('❌ Some cursor files failed to load');
+            }
+        }).catch(error => {
+            console.error('Cursor file error:', error);
+            document.body.classList.add('error');
+        });
+        
+        // Add click handlers to test panels
+        document.querySelectorAll('.rainbow-panel').forEach(panel => {
+            panel.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

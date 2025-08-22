@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow UI Demo</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .demo-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #fff;
+            border-radius: 10px;
+        }
+        
+        .rainbow-panel {
+            background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+            background-size: 400% 400%;
+            animation: rainbow-shift 3s ease infinite;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .rainbow-panel:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+        
+        @keyframes rainbow-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .rainbow-glow {
+            animation: rainbow-glow 4s ease infinite;
+        }
+        
+        @keyframes rainbow-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.5),
+                            0 0 40px rgba(255, 128, 0, 0.3),
+                            0 0 60px rgba(255, 255, 0, 0.2);
+            }
+            25% {
+                box-shadow: 0 0 20px rgba(0, 255, 0, 0.5),
+                            0 0 40px rgba(0, 255, 128, 0.3),
+                            0 0 60px rgba(0, 255, 255, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0, 0, 255, 0.5),
+                            0 0 40px rgba(128, 0, 255, 0.3),
+                            0 0 60px rgba(255, 0, 255, 0.2);
+            }
+            75% {
+                box-shadow: 0 0 20px rgba(255, 0, 128, 0.5),
+                            0 0 40px rgba(255, 0, 0, 0.3),
+                            0 0 60px rgba(255, 128, 0, 0.2);
+            }
+        }
+        
+        .rainbow-text {
+            background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow-shift 3s ease infinite;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .click-instruction {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="rainbow-text">🌈 Rainbow UI Demo</h1>
+    
+    <div class="info-box">
+        <h3>🎯 How to Use Rainbow Effects:</h3>
+        <p>1. <strong>Upcoming Events Panel:</strong> Click on any event card to activate rainbow mode</p>
+        <p>2. <strong>Club Forms Panel:</strong> Click on any form card to activate rainbow mode</p>
+        <p>3. <strong>"Be part of the equation" Panel:</strong> Click anywhere on the form to activate rainbow mode</p>
+        <p>4. <strong>Click again</strong> to deactivate rainbow mode</p>
+    </div>
+    
+    <div class="demo-section">
+        <h2>✨ Rainbow Effects Available:</h2>
+        
+        <div class="rainbow-panel rainbow-glow">
+            <h3>🎨 Rainbow Background + Glow</h3>
+            <p>This panel shows the rainbow background with animated glow effects</p>
+        </div>
+        
+        <div class="rainbow-panel">
+            <h3>🌈 Rainbow Background Only</h3>
+            <p>This panel shows just the animated rainbow background</p>
+        </div>
+        
+        <div class="rainbow-text">
+            <h3>🎭 Rainbow Text Effect</h3>
+            <p>This text has animated rainbow colors</p>
+        </div>
+    </div>
+    
+    <div class="demo-section">
+        <h2>🚀 Features:</h2>
+        <ul>
+            <li>✨ Animated rainbow backgrounds</li>
+            <li>🌟 Glowing shadow effects</li>
+            <li>🎯 Click to activate/deactivate</li>
+            <li>🔄 Smooth transitions (700ms)</li>
+            <li>📱 Responsive design</li>
+            <li>🎨 Multiple rainbow color schemes</li>
+        </ul>
+    </div>
+    
+    <div class="click-instruction">
+        <strong>💡 Tip:</strong> Go back to your main app and try clicking on the panels mentioned above!
+    </div>
+    
+    <div class="info-box">
+        <h3>🔧 Technical Details:</h3>
+        <p><strong>CSS Animations:</strong> rainbow-shift, rainbow-glow</p>
+        <p><strong>Duration:</strong> 700ms transitions</p>
+        <p><strong>Effects:</strong> scale, shadow, border, background</p>
+        <p><strong>Browser Support:</strong> Modern browsers with CSS3 support</p>
+    </div>
+</body>
+</html>

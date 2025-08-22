@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Times New Roman', serif;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+/* Custom cursors with debugging - HIGH SPECIFICITY */
+* {
+  cursor: url('/cursor-small.png') 8 8, auto !important;
+}
+
+/* Alternative cursor approach using PNG */
+.cursor-png {
+  cursor: url('/cursor-small.png') 8 8, auto !important;
+}
+
+/* Force cursor with !important */
+.cursor-force {
+  cursor: url('/School Calculator & Math Formula Animated--cursor--SweezyCursors.png') 2 2 !important;
+}
+
+/* Pointer cursor for clickable elements - HIGH SPECIFICITY */
+button, a, input, .group, [role="button"], [tabindex], 
+button *, a *, input *, .group *, [role="button"] *, [tabindex] * {
+  cursor: url('/pointer-small.png') 8 8, pointer !important;
+}
+
+/* Text cursor for input fields - HIGH SPECIFICITY */
+input[type="text"], input[type="number"], textarea,
+input[type="text"] *, input[type="number"] *, textarea * {
+  cursor: url('/cursor-small.png') 8 8, text !important;
+}
+
+/* Resize cursors */
+textarea {
+  cursor: url('/cursor-small.png') 8 8, auto !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Enhanced glow effects */
+.hover\:shadow-white:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.focus\:shadow-white:focus {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, .group {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced backdrop blur */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+}
+
+/* Custom input styles */
+input::placeholder {
+  font-family: 'Times New Roman', serif;
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+  .text-6xl {
+    font-size: 3rem;
+  }
+  
+  .text-8xl {
+    font-size: 4rem;
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+}
+
+/* Simple rainbow hover effect - no animations or glowing */
+.panel-rainbow-hover {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+.panel-rainbow-hover:hover {
+  border: 2px solid;
+  border-image: linear-gradient(45deg, 
+    #ff0000 0%, 
+    #ff8000 14.28%, 
+    #ffff00 28.56%, 
+    #00ff00 42.84%, 
+    #0080ff 57.12%, 
+    #8000ff 71.4%, 
+    #ff0080 85.68%, 
+    #ff0000 100%
+  ) 1;
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-2px);
+}
+
+
+/* Enhanced cursor styles for different states */
+/* Loading state */
+.loading {
+  cursor: url('/cursor-small.png') 8 8, wait;
+}
+
+/* Disabled state */
+button:disabled, input:disabled {
+  cursor: url('/cursor-small.png') 8 8, not-allowed;
+}
+
+/* Drag and drop */
+[draggable="true"] {
+  cursor: url('/cursor-small.png') 8 8, grab;
+}
+
+[draggable="true"]:active {
+  cursor: url('/cursor-small.png') 8 8, grabbing;
+}
+
+/* Selection cursor */
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Fallback cursors for better browser compatibility */
+@supports not (cursor: url()) {
+  * {
+    cursor: auto;
+  }
+  
+  button, a, input, .group, [role="button"], [tabindex] {
+    cursor: pointer;
+  }
+  
+  input[type="text"], input[type="number"], textarea {
+    cursor: text;
+  }
+}
+
+/* Debug cursor styles - remove these after testing */
+.debug-cursor {
+  cursor: url('/cursor-small.png') 8 8, auto !important;
+}
+
+.debug-pointer {
+  cursor: url('/pointer-small.png') 8 8, pointer !important;
+}
+
+/* Alternative cursor approach using data attributes */
+[data-cursor="pointer"] {
+  cursor: url('/pointer-small.png') 8 8, pointer;
+}
+
+[data-cursor="text"] {
+  cursor: url('/cursor-small.png') 8 8, text;
+}
+
+[data-cursor="default"] {
+  cursor: url('/cursor-small.png') 8 8, auto;
+}
+
+/* Math calculator specific cursor enhancements */
+.calculator-button {
+  cursor: url('/pointer-small.png') 8 8, pointer;
+  transition: all 0.2s ease;
+}
+
+.calculator-button:hover {
+  transform: scale(1.05);
+}
+
+.calculator-button:active {
+  transform: scale(0.95);
+}
+
+/* Formula display area */
+.formula-display {
+  cursor: url('/cursor-small.png') 8 8, text;
+}
+
+/* Math symbols and operators */
+.math-operator {
+  cursor: url('/pointer-small.png') 8 8, pointer;
+}
+
+/* Number input fields */
+.number-input {
+  cursor: url('/cursor-small.png') 8 8, text;
+}
+
+/* Result display */
+.result-display {
+  cursor: url('/cursor-small.png') 8 8, default;
+}
+
+/* React Component Specific Cursor Rules */
+.nav button, .nav a, .nav input,
+.nav button *, .nav a *, .nav input * {
+  cursor: url('/pointer-small.png') 8 8, pointer !important;
+}
+
+/* Events, Forms, Join Section Panels */
+[class*="EventsSection"] button, [class*="FormsSection"] button, [class*="JoinSection"] button,
+[class*="EventsSection"] a, [class*="FormsSection"] a, [class*="JoinSection"] a,
+[class*="EventsSection"] [role="button"], [class*="FormsSection"] [role="button"], [class*="JoinSection"] [role="button"] {
+  cursor: url('/pointer-small.png') 8 8, pointer !important;
+}
+
+/* Panel hover states */
+.panel-rainbow-hover, .panel-rainbow-hover *,
+[class*="panel-rainbow"] {
+  cursor: url('/pointer-small.png') 8 8, pointer !important;
+}
+
+/* Override Tailwind cursor utilities */
+.cursor-pointer {
+  cursor: url('/pointer-small.png') 8 8, pointer !important;
+}
+
+.cursor-text {
+  cursor: url('/cursor-small.png') 8 8, text !important;
+}
+
+.cursor-default {
+  cursor: url('/cursor-small.png') 8 8, auto !important;
+}
+
+/* Force cursor on all interactive elements */
+[onClick], [onClick] *,
+[onKeyDown], [onKeyDown] *,
+[tabIndex], [tabIndex] * {
+  cursor: url('/pointer-small.png') 8 8, pointer !important;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cursor Debug Test</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .test-section {
+            border: 2px solid #fff;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        
+        .test1 { cursor: url('/cursor.cur'), auto; }
+        .test2 { cursor: url('/cursor.cur') 16 16, auto; }
+        .test3 { cursor: url('/School Calculator & Math Formula Animated--cursor--SweezyCursors.png'), auto; }
+        .test4 { cursor: url('/cursor.cur') !important; }
+        
+        button {
+            padding: 15px 30px;
+            margin: 10px;
+            background: #333;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+        
+        .info {
+            background: #222;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Cursor Debug Test</h1>
+    
+    <div class="info">
+        <h3>Testing Steps:</h3>
+        <p>1. Hover over each test area</p>
+        <p>2. Check browser console for errors</p>
+        <p>3. Try different browsers (Chrome, Firefox, Safari)</p>
+    </div>
+    
+    <div class="test-section test1">
+        <h3>Test 1: Basic .cur file</h3>
+        <p>Hover here - should show custom cursor</p>
+        <button>Test Button</button>
+    </div>
+    
+    <div class="test-section test2">
+        <h3>Test 2: .cur with coordinates</h3>
+        <p>Hover here - cursor with 16x16 hotspot</p>
+        <button>Test Button</button>
+    </div>
+    
+    <div class="test-section test3">
+        <h3>Test 3: PNG fallback</h3>
+        <p>Hover here - using PNG image</p>
+        <button>Test Button</button>
+    </div>
+    
+    <div class="test-section test4">
+        <h3>Test 4: Force important</h3>
+        <p>Hover here - with !important</p>
+        <button>Test Button</button>
+    </div>
+    
+    <div class="info">
+        <h3>Debug Info:</h3>
+        <p>Cursor files available:</p>
+        <ul>
+            <li><code>/cursor.cur</code> (9.4KB)</li>
+            <li><code>/School Calculator & Math Formula Animated--cursor--SweezyCursors.png</code> (2.8KB)</li>
+        </ul>
+        <p>If none work, the issue might be:</p>
+        <ul>
+            <li>Browser compatibility</li>
+            <li>File format issues</li>
+            <li>MIME type problems</li>
+        </ul>
+    </div>
+    
+    <script>
+        // Debug script to check cursor loading
+        console.log('Cursor Debug Test Loaded');
+        
+        // Test cursor file accessibility
+        fetch('/cursor.cur')
+            .then(response => {
+                console.log('Cursor file accessible:', response.status);
+                console.log('Content-Type:', response.headers.get('content-type'));
+            })
+            .catch(error => {
+                console.error('Cursor file error:', error);
+            });
+    </script>
+</body>
+</html>

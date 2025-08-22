@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        input {
+            padding: 10px;
+            margin: 10px;
+            background: #222;
+            color: #fff;
+            border: 1px solid #555;
+            border-radius: 4px;
+        }
+        
+        /* Test custom cursors */
+        * {
+            cursor: url('/School Calculator & Math Formula Animated--pointer--SweezyCursors.cur'), auto;
+        }
+        
+        button, a {
+            cursor: url('/School Calculator & Math Formula Animated--pointer--SweezyCursors.cur'), pointer;
+        }
+        
+        input {
+            cursor: url('/School Calculator & Math Formula Animated--pointer--SweezyCursors.cur'), text;
+        }
+        
+        .debug-cursor {
+            cursor: url('/School Calculator & Math Formula Animated--pointer--SweezyCursors.cur'), auto !important;
+        }
+        
+        .debug-pointer {
+            cursor: url('/School Calculator & Math Formula Animated--pointer--SweezyCursors.cur'), pointer !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Custom Cursor Test</h1>
+    
+    <div class="test-section">
+        <h2>Default Cursor (should be animated)</h2>
+        <p>Move your mouse over this text - you should see the animated cursor</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>Pointer Cursor (should be static)</h2>
+        <button>Click me - pointer cursor</button>
+        <a href="#" style="color: #fff;">Link - pointer cursor</a>
+    </div>
+    
+    <div class="test-section">
+        <h2>Text Cursor (should be animated)</h2>
+        <input type="text" placeholder="Type here - text cursor" />
+        <input type="number" placeholder="Number input" />
+    </div>
+    
+    <div class="test-section">
+        <h2>Debug Classes</h2>
+        <button class="debug-cursor">Debug Cursor</button>
+        <button class="debug-pointer">Debug Pointer</button>
+    </div>
+    
+    <div class="test-section">
+        <h2>Data Attribute Test</h2>
+        <div data-cursor="pointer" style="padding: 10px; background: #333; display: inline-block;">Pointer Cursor</div>
+        <div data-cursor="text" style="padding: 10px; background: #333; display: inline-block; margin-left: 10px;">Text Cursor</div>
+    </div>
+</body>
+</html>
